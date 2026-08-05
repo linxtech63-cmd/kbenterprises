@@ -18,8 +18,11 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
+const formSubmitEndpoint = "https://formsubmit.co/ajax/khababmahboobbutt@gmail.com";
+
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
   const {
     register,
     handleSubmit,
@@ -40,30 +43,58 @@ export function ContactForm() {
 
   async function onSubmit(data: FormValues) {
     setStatus("idle");
+    setStatusMessage("");
     try {
       if (data.website) {
         setStatus("error");
+        setStatusMessage("Spam protection was triggered. Please email us directly.");
         return;
       }
 
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      console.info("Contact form ready for backend integration", {
-        fullName: data.fullName,
-        email: data.email,
-        company: data.company,
-        phone: data.phone,
-        subject: data.subject,
-        message: data.message
+      const response = await fetch(formSubmitEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: data.fullName,
+          email: data.email,
+          _replyto: data.email,
+          company: data.company,
+          phone: data.phone || "Not provided",
+          subject: data.subject,
+          message: data.message,
+          _subject: `New Business Central inquiry: ${data.subject}`,
+          _template: "table",
+          _captcha: "false"
+        })
       });
+
+      if (!response.ok) {
+        throw new Error("FormSubmit request failed.");
+      }
+
       reset();
       setStatus("success");
+      setStatusMessage(
+        "Thank you. Your message has been sent successfully, and we will respond within one business day."
+      );
     } catch {
       setStatus("error");
+      setStatusMessage(
+        "We could not send your message from the form. Please email khababmahboobbutt@gmail.com directly."
+      );
     }
   }
 
   return (
-    <form className="soft-card p-6 md:p-8" onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form
+      className="soft-card p-6 md:p-8"
+      onSubmit={handleSubmit(onSubmit)}
+      noValidate
+      aria-describedby="contact-form-status"
+    >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Full Name" error={errors.fullName?.message}>
           <input
@@ -130,13 +161,22 @@ export function ContactForm() {
         </button>
       </div>
       {status === "success" ? (
-        <p className="mt-5 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm font-medium text-green-800">
-          Thank you. Your message is ready for delivery once the backend endpoint is connected.
+        <p
+          id="contact-form-status"
+          className="mt-5 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm font-medium text-green-800"
+          role="status"
+          aria-live="polite"
+        >
+          {statusMessage}
         </p>
       ) : null}
       {status === "error" ? (
-        <p className="mt-5 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-800">
-          We could not prepare your message. Please email khababmahboobbutt@gmail.com directly.
+        <p
+          id="contact-form-status"
+          className="mt-5 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-800"
+          role="alert"
+        >
+          {statusMessage}
         </p>
       ) : null}
     </form>
