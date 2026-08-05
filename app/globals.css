@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  --primary-blue: #0078d4;
+  --dark-blue: #002050;
+  --accent-blue: #0f6cbd;
+  --light-gray: #f7f9fc;
+  --text: #1f2937;
+  --border: #dbe5f1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #101827;
+  font-family: Poppins, "Segoe UI", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(0, 120, 212, 0.18);
+}
+
+.container-shell {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.section-pad {
+  padding: 96px 0;
+}
+
+.soft-card {
+  border: 1px solid rgba(219, 229, 241, 0.95);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 14px 36px rgba(0, 32, 80, 0.08);
+}
+
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 3px;
+}
+
+.focus-ring:focus-visible {
+  outline-color: var(--primary-blue);
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(0, 120, 212, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 120, 212, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.dashboard-shadow {
+  box-shadow:
+    0 22px 70px rgba(0, 32, 80, 0.18),
+    0 2px 8px rgba(0, 32, 80, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-shell {
+    width: min(100% - 28px, 1120px);
+  }
+
+  .section-pad {
+    padding: 68px 0;
+  }
+}
