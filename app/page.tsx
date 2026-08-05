@@ -190,13 +190,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[#002050] py-20 text-white">
+      <section className="enterprise-cta py-20">
         <div className="container-shell flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
           <div className="max-w-3xl">
-            <h2 className="text-3xl leading-tight text-white md:text-4xl">
+            <h2 className="text-3xl leading-tight md:text-4xl">
               Ready to Transform Your Business Central Environment?
             </h2>
-            <p className="mt-5 text-base leading-8 text-blue-100">
+            <p className="mt-5 text-base leading-8">
               Let&apos;s discuss your Microsoft Dynamics 365 Business Central project and discover
               how we can help improve efficiency, automate operations, and support your business
               growth.

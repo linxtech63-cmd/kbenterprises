@@ -123,11 +123,11 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-[#002050] py-20 text-white">
+      <section className="enterprise-cta py-20">
         <div className="container-shell flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
           <div>
-            <h2 className="text-3xl text-white">Need Business Central expertise?</h2>
-            <p className="mt-4 max-w-2xl leading-8 text-blue-100">
+            <h2 className="text-3xl">Need Business Central expertise?</h2>
+            <p className="mt-4 max-w-2xl leading-8">
               Discuss implementation, customization, integration, or support needs with a senior
               Business Central consultant.
             </p>

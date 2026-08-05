@@ -88,6 +88,77 @@ textarea {
     0 2px 8px rgba(0, 32, 80, 0.08);
 }
 
+.btn-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.btn-link:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--primary-blue);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(0, 120, 212, 0.18);
+}
+
+.btn-primary:hover {
+  background: var(--accent-blue);
+  color: #ffffff;
+  box-shadow: 0 12px 24px rgba(0, 120, 212, 0.24);
+}
+
+.btn-secondary {
+  border: 1px solid #b9cbe0;
+  background: #ffffff;
+  color: var(--dark-blue);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+.btn-light {
+  background: #ffffff;
+  color: var(--dark-blue);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.btn-light:hover {
+  background: #f7f9fc;
+  color: var(--primary-blue);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
+}
+
+.enterprise-cta {
+  background:
+    linear-gradient(135deg, rgba(15, 108, 189, 0.24), transparent 42%),
+    #002050;
+  color: #ffffff;
+}
+
+.enterprise-cta h2 {
+  color: #ffffff;
+}
+
+.enterprise-cta p {
+  color: #dcecff;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
