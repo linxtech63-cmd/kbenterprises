@@ -36,9 +36,12 @@ export const metadata: Metadata = {
       "Enterprise-level Microsoft Dynamics 365 Business Central consulting without large-firm overhead."
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/apple-icon.svg"
+    icon: [
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" }
+    ],
+    shortcut: "/favicon-32.png",
+    apple: "/apple-icon.png"
   }
 };
 
